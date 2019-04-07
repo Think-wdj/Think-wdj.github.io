@@ -110,7 +110,7 @@ server {
 
 ## nginx配置文件
 
-![nginxConfig](C:\Users\wudongjun\Desktop\markdown\imgs\nginxConfig.jpg)
+![nginxConfig](..\imgs\nginxConfig.jpg)
 
 > 1. 全局块
 
