@@ -91,18 +91,18 @@ server {
        } 
    ```
 
-5.url_hash（第三方)
+5. url_hash（第三方)
 
-​	按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。 在upstream中加入hash语句，server语句中不能写入weight等其他的参数，hash_method是使用的hash算法.
+   ​	按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。 在upstream中加入hash语句，server语句中不能写入weight等其他的参数，hash_method是使用的hash算法.
 
-```config
+   ```config
     upstream backend { 
-        hash $request_uri; 
-        hash_method crc32; 
-        server localhost:8080;
-        server localhost:8081;
-    } 
-```
+           hash $request_uri; 
+           hash_method crc32; 
+           server localhost:8080;
+           server localhost:8081;
+       } 
+   ```
 
 ​	以上5种负载均衡各自适用不同情况下使用，所以可以根据实际情况选择使用哪种策略模式,不过fair和url_hash需要安装第三方模块才能使用.
 
