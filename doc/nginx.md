@@ -1,3 +1,5 @@
+​																					*:吴东俊*·
+
 # 关于nginx
 
 > nginx是一个**高性能**的**轻量级高并发**服务器，是非常不错的Apache服务器替代品。以统一资源描述符(Uniform Resources Identifier)URI或者统一资源定位符(Uniform Resources Locator)URL作为沟通依据，通过HTTP协议提供各种网络服务。
