@@ -1,4 +1,4 @@
-​																					*:吴东俊*·
+​																				*:吴东俊*·
 
 # 关于nginx
 
@@ -107,6 +107,80 @@ server {
    ```
 
 ​	以上5种负载均衡各自适用不同情况下使用，所以可以根据实际情况选择使用哪种策略模式,不过fair和url_hash需要安装第三方模块才能使用.
+
+
+
+## HTTP服务器
+
+​	Nginx本身是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器，同时现在也很流行动静分离，就可以通过Nginx来实现，首先看看Nginx做静态资源服务器
+
+```config
+    server {
+        listen       80;                                                         
+        server_name  localhost;                                               
+        client_max_body_size 1024M;
+
+
+        location / {
+               root   e:\wwwroot;
+               index  index.html;
+           }
+    }
+```
+
+这样如果访问http://localhost就会默认访问到E盘wwwroot目录下面的index.html，如果一个网站只是静态页面的话，那么就可以通过这种方式来实现部署。
+
+### 动静分离
+
+​	动静分离可以说是现在nginx最重要的使用方式了，也可以说是他这么流行的原因。
+
+​	动静分离是让动态网站里的动态网页根据一定规则把不变的资源和经常变的资源区分开来，动静资源做好了拆分以后，我们就可以根据静态资源的特点将其做缓存操作，这就是网站静态化处理的核心思路
+
+```config
+upstream test{  
+       server localhost:8080;  
+       server localhost:8081;  
+    }   
+
+    server {  
+        listen       80;  
+        server_name  localhost;  
+
+        location / {  
+            root   e:\wwwroot;  
+            index  index.html;  
+        }  
+
+        # 所有静态请求都由nginx处理，存放目录为html  
+        location ~ \.(gif|jpg|jpeg|png|bmp|swf|css|js)$ {  
+            root    e:\wwwroot;  
+        }  
+
+        # 所有动态请求都转发给tomcat处理  
+        location ~ \.(jsp|do)$ {  
+            proxy_pass  http://test;  
+        }  
+
+        error_page   500 502 503 504  /50x.html;  
+        location = /50x.html {  
+            root   e:\wwwroot;  
+        }  
+    } 
+```
+
+​	这样我们就可以吧HTML以及图片和css以及js放到wwwroot目录下，而tomcat只负责处理jsp和请求，例如当我们后缀为gif的时候，Nginx默认会从wwwroot获取到当前请求的动态图文件返回，当然这里的静态文件跟Nginx是同一台服务器，我们也可以在另外一台服务器，然后通过反向代理和负载均衡配置过去就好了，只要搞清楚了最基本的流程，很多配置就很简单了，另外localtion后面其实是一个正则表达式，所以非常灵活
+
+## 正向代理
+
+​	正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。
+
+1. 访问原来无法访问的资源，如google
+
+2. 可以做缓存，加速访问资源
+3. 对客户端访问授权，上网进行认证
+4. 代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息
+
+
 
 
 

@@ -4,7 +4,11 @@
 
 # index.html
 
-[nginx概括](doc/nginx.html)
+#### [nginxWindow安装](doc/nginxInstall.md)
+
+#### [nginx概括](doc/nginx.html)
+
+
 
 
 
