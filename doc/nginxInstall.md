@@ -1,4 +1,4 @@
-​																					*：吴东俊*
+																					*：吴东俊*
 
 # nginx在window安装
 
@@ -20,5 +20,5 @@ http://nginx.org/en/download.html
 
 浏览器直接访问就可以看见了
 
-![](C:\Users\wudongjun\Desktop\markdown\imgs\3.png)
+![](../imgs/3.png)
 
