@@ -359,3 +359,7 @@ http {
 }
 ```
 
+## nginx可以实现的高可用集群方案
+​	Keepalived + Ngin双机热备的高可用
+
+![nginxConfig](https://img-blog.csdn.net/20171109020630782?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveW91Z291bGU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
