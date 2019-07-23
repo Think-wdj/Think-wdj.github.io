@@ -4,15 +4,6 @@
 
 # index.html
 
-### nginx
-
-###### 		[nginxWindow安装](doc/nginxInstall.md)
-
-###### 		[nginx概括](doc/nginx.html)
-###### 	[nginx高性能原因](doc/nginx高性能原因.html)
-
-------
-
 
 
 ### spring cloud(RoadMap)
@@ -29,6 +20,12 @@
 
 ###### 1.[MQ](doc/MQ/MQ.html)
 
+###### 2.[nginx](doc/nginx.html)
+
+ 	> [nginxWindow安装](doc/nginxInstall.md)
+ 	>
+ 	> [nginx高性能原因](doc/nginx高性能原因.html)
+
 ------
 
 
@@ -36,3 +33,4 @@
 ### 编程思想
 
 [*定律*](doc/codeThinking/定律.html)
+
